@@ -1,0 +1,170 @@
+join_tables
+[2021-09-14 12:35:17,119: WARNING/ForkPoolWorker-8] ['gp.product_xref', 'gp.product_blend', 'md.product', 'gp.customer_id', 'gp.customer_id', 'gp.customer', 'gp.customer',
+ 'gp.customer_cppd', 'gp.cot', 'gp.cot', 'gp.cot', 'gp.trans_type', 'gp.state', 'gp.phs_result', 'gp.contract']
+
+
+table_values
+[2021-09-14 12:17:40,593: WARNING/ForkPoolWorker-8] dict_values(['gp.direct_sale', 'gp.product_xref', 'gp.product_blend', 'md.product', '"ShiptoCustnum"', '"BilltoCustnum"',
+ '"ShiptoCust"', '"BilltoCust"', 'gp.customer_cppd', '"BilltoCOT"', '"ShiptoCOT"', 'gp.cot', 'gp.trans_type', 'gp.state', 'gp.phs_result', 'gp.contract'])
+
+
+
+##After adding Aliase for contract and CPPD
+
+table_values
+[2021-09-14 12:35:16,219: WARNING/ForkPoolWorker-8] dict_values(['gp.direct_sale', 'gp.product_xref', 'gp.product_blend', 'md.product', '"ShiptoCustnum"', '"BilltoCustnum"',
+ '"ShiptoCust"', '"BilltoCust"', 'gp.customer_cppd', '"BilltoCOT"', '"ShiptoCOT"', 'gp.cot', 'gp.trans_type', 'gp.state', 'gp.phs_result', '"Contract"'])
+ 
+join_tables
+[2021-09-14 14:07:31,317: WARNING/ForkPoolWorker-8] ['gp.product_xref', 'gp.product_blend', 'md.product', 'gp.customer_id', 'gp.customer_id', 'gp.customer', 'gp.customer',
+ 'gp.customer_cppd', 'gp.cot', 'gp.cot', 'gp.cot', 'gp.trans_type', 'gp.state', 'gp.phs_result', 'gp.contract']
+
+table_values
+[2021-09-14 14:07:31,316: WARNING/ForkPoolWorker-8] dict_values(['gp.direct_sale', 'gp.product_xref', 'gp.product_blend', 'md.product', '"ShiptoCustnum"', '"BilltoCustnum"',
+ '"ShiptoCust"', '"BilltoCust"', '"CPPD"', '"BilltoCOT"', '"ShiptoCOT"', 'gp.cot', 'gp.trans_type', 'gp.state', 'gp.phs_result', '"Contract"'])
+ 
+
+
+
+[SQL: INSERT INTO gp.bucket_detail (exec_id, calc_group, logic_slot1, logic_slot2, logic_slot3, unbucketed_id, logic_slot1_ratio1, logic_slot2_ratio1, logic_slot3_ratio1, 
+unbucketed_id_ratio1, group_key1, group_key2, group_key3, ratio1, tid, period, source, ndc11, ndc9, wac_amount, cbk_amount, net_amount, discount, units) 
+SELECT %(param_1)s AS param_1, %(param_2)s AS param_2, CASE WHEN gp.trans_type.trans_elig = 'y' AND gp.state.amp_elig = 'y' AND gp.cot.rcp_elig = 'y' AND 
+gp.direct_sale.net_amount != 0 AND gp.trans_type.trans_class = 'sale' THEN %(param_3)s END AS anon_1, CASE WHEN gp.trans_type.trans_class = 'sale' THEN %(param_4)s END 
+AS anon_2, %(param_5)s AS param_5, CASE WHEN gp.trans_type.trans_elig = 'y' AND gp.state.amp_elig = 'y' AND gp.cot.rcp_elig = 'y' AND gp.direct_sale.net_amount != 0 AND 
+gp.trans_type.trans_class = 'sale' 
+THEN NULL WHEN gp.trans_type.trans_class = 'sale' THEN NULL ELSE %(param_6)s END AS anon_3, CASE WHEN 1=0 THEN %(param_7)s END AS anon_4, %(param_8)s AS param_8, %(param_9)s AS param_9, CASE WHEN 1=1 THEN NULL ELSE %(param_10)s END AS anon_5, CASE WHEN gp.trans_type.trans_elig = 'y' AND gp.state.amp_elig = 'y' AND gp.cot.rcp_elig = 'y' AND gp.direct_sale.net_amount != 0 AND gp.trans_type.trans_class = 'sale' THEN %(param_11)s END AS anon_6, CASE WHEN gp.trans_type.trans_class = 'sale' THEN %(param_12)s END AS anon_7, %(param_13)s AS param_13, %(param_14)s AS param_14, gp.direct_sale.id AS gp_direct_sale_id, gp.direct_sale.period_month AS gp_direct_sale_period_month, %(param_15)s AS param_15, md.product.ndc11 AS md_product_ndc11, md.product.ndc9 AS md_product_ndc9, gp.direct_sale.discount * coalesce(gp.contract.non_bonafide_perc, %(coalesce_1)s) AS anon_8, gp.direct_sale.net_amount * coalesce(gp.customer_cppd.cppd, %(coalesce_2)s) AS anon_9, gp.direct_sale.net_amount AS gp_direct_sale_net_amount, gp.direct_sale.discount AS gp_direct_sale_discount, gp.direct_sale.quantity * md.product.medicaid_conversion_factor AS anon_10
+FROM gp.contract, gp.direct_sale LEFT OUTER JOIN gp.product_xref ON (lower(gp.direct_sale.item) = lower(gp.product_xref.item)) AND gp.direct_sale.period_date >= gp.product_xref.start_date AND gp.direct_sale.period_date <= gp.product_xref.end_date AND gp.product_xref.client_id = %(client_id_1)s AND gp.product_xref.status = %(status_1)s LEFT OUTER JOIN gp.product_blend ON (gp.product_xref.ndc11 = gp.product_blend.ndc11) AND gp.direct_sale.period_date >= gp.product_blend.start_date AND gp.direct_sale.period_date <= gp.product_blend.end_date AND gp.product_blend.client_id = %(client_id_2)s AND gp.product_blend.status = %(status_2)s LEFT OUTER JOIN md.product ON (gp.product_blend.ndc11_blend = md.product.ndc11) AND gp.direct_sale.period_date >= md.product.start_date AND gp.direct_sale.period_date <= md.product.end_date AND md.product.client_id = %(client_id_3)s AND md.product.status = %(status_3)s LEFT OUTER JOIN gp.customer_id AS "ShiptoCustnum" ON (gp.direct_sale.st_num = "ShiptoCustnum".customer_id) AND gp.direct_sale.period_date >= "ShiptoCustnum".start_date AND gp.direct_sale.period_date <= "ShiptoCustnum".end_date AND "ShiptoCustnum".client_id = %(client_id_4)s AND "ShiptoCustnum".status = %(status_4)s LEFT OUTER JOIN gp.customer_id AS "BilltoCustnum" ON (gp.direct_sale.bt_num = "BilltoCustnum".customer_id) AND gp.direct_sale.period_date >= "BilltoCustnum".start_date AND gp.direct_sale.period_date <= "BilltoCustnum".end_date AND "BilltoCustnum".client_id = %(client_id_5)s AND "BilltoCustnum".status = %(status_5)s LEFT OUTER JOIN gp.customer AS "ShiptoCust" ON ("ShiptoCustnum".customer_id_sparc = "ShiptoCust".id) AND gp.direct_sale.period_date >= "ShiptoCust".start_date AND gp.direct_sale.period_date <= "ShiptoCust".end_date AND "ShiptoCust".client_id = %(client_id_6)s AND "ShiptoCust".status = %(status_6)s LEFT OUTER JOIN gp.customer AS 
+"BilltoCust" ON ("BilltoCustnum".customer_id_sparc = "BilltoCust".id) AND gp.direct_sale.period_date >= "BilltoCust".start_date AND gp.direct_sale.period_date <= "BilltoCust".end_date AND "BilltoCust".client_id = %(client_id_7)s AND "BilltoCust".status = %(status_7)s LEFT OUTER JOIN gp.customer_cppd ON ("BilltoCustnum".customer_id = gp.customer_cppd.bt_num) AND gp.direct_sale.period_date >= gp.customer_cppd.start_date AND gp.direct_sale.period_date <= gp.customer_cppd.end_date AND gp.customer_cppd.client_id = %(client_id_8)s AND gp.customer_cppd.status = %(status_8)s LEFT OUTER JOIN gp.cot AS "BilltoCOT" ON (lower("BilltoCust".cot) = lower("BilltoCOT".abbr)) AND gp.direct_sale.period_date >= "BilltoCOT".start_date AND gp.direct_sale.period_date <= "BilltoCOT".end_date AND "BilltoCOT".client_id = %(client_id_9)s AND "BilltoCOT".status = %(status_9)s LEFT OUTER JOIN gp.cot AS "ShiptoCOT" ON (lower("ShiptoCust".cot) = lower("ShiptoCOT".abbr)) AND gp.direct_sale.period_date >= "ShiptoCOT".start_date AND gp.direct_sale.period_date <= "ShiptoCOT".end_date AND "ShiptoCOT".client_id = %(client_id_10)s AND "ShiptoCOT".status = %(status_10)s LEFT OUTER JOIN gp.cot ON (CASE WHEN ("BilltoCOT".whlsr = 'y' AND "ShiptoCOT".whlsr = 'n') THEN "BilltoCOT".abbr ELSE "ShiptoCOT".abbr END = gp.cot.abbr) AND gp.direct_sale.period_date >= gp.cot.start_date AND 
+gp.direct_sale.period_date <= gp.cot.end_date AND gp.cot.client_id = %(client_id_11)s AND gp.cot.status = %(status_11)s LEFT OUTER JOIN gp.trans_type ON (lower(gp.direct_sale.tt_key) = lower(gp.trans_type.key)) AND gp.direct_sale.period_date >= gp.trans_type.start_date AND gp.direct_sale.period_date <= gp.trans_type.end_date AND gp.trans_type.client_id = %(client_id_12)s AND gp.trans_type.status = %(status_12)s LEFT OUTER JOIN gp.state ON (CASE WHEN ("BilltoCOT".whlsr = 'y' AND "ShiptoCOT".whlsr = 'n') THEN lower("BilltoCust".state) ELSE lower("ShiptoCust".state) END = lower(gp.state.abbr)) AND gp.direct_sale.period_date >= gp.state.start_date AND gp.direct_sale.period_date <= gp.state.end_date AND gp.state.client_id = %(client_id_13)s AND gp.state.status = %(status_13)s LEFT OUTER JOIN gp.phs_result ON (gp.direct_sale.st_num = gp.phs_result.number AND gp.direct_sale.price_date = gp.phs_result.invoice_date) AND gp.direct_sale.period_date >= gp.phs_result.start_date AND gp.direct_sale.period_date <= gp.phs_result.end_date AND gp.phs_result.client_id = %(client_id_14)s AND gp.phs_result.status = %(status_14)s LEFT OUTER JOIN gp.contract AS "Contract" ON (gp.direct_sale.contract_num = "Contract".number) AND gp.direct_sale.period_date >= "Contract".start_date AND gp.direct_sale.period_date <= "Contract".end_date AND "Contract".client_id = %(client_id_15)s AND "Contract".status = %(status_15)s
+WHERE gp.direct_sale.status = %(status_16)s AND gp.direct_sale.client_id = %(client_id_16)s AND gp.product_xref.elig IS true AND gp.direct_sale.period_date >= %(period_date_1)s AND gp.direct_sale.period_date <= %(period_date_2)s AND md.product.flag_amp IS true AND gp.direct_sale.period_date >= md.product.effective_date AND gp.direct_sale.period_date <= md.product.expiration_date]
+[parameters: {'param_1': 7847, 'param_2': 'PRE', 'param_3': 24831, 'param_4': 24833, 'param_5': None, 'param_6': 24834, 'param_7': 0, 'param_8': None, 'param_9': None, 'param_10': 24834, 'param_11': None, 'param_12': None, 'param_13': None, 'param_14': False, 'param_15': 'DS', 'coalesce_1': 1, 'coalesce_2': 0, 'client_id_1': 7, 'status_1': 'ACTIVE', 'client_id_2': 7, 'status_2': 'ACTIVE', 'client_id_3': 7, 'status_3': 'ACTIVE', 'client_id_4': 7, 'status_4': 'ACTIVE', 'client_id_5': 7, 'status_5': 'ACTIVE', 'client_id_6': 7, 'status_6': 'ACTIVE', 'client_id_7': 7, 'status_7': 'ACTIVE', 'client_id_8': 7, 'status_8': 'ACTIVE', 'client_id_9': 7, 'status_9': 'ACTIVE', 'client_id_10': 7, 'status_10': 'ACTIVE', 'client_id_11': 7, 'status_11': 'ACTIVE', 'client_id_12': 7, 'status_12': 'ACTIVE', 'client_id_13': 7, 'status_13': 'ACTIVE', 'client_id_14': 7, 'status_14': 'ACTIVE', 'client_id_15': 7, 'status_15': 'ACTIVE', 'status_16': 'ACTIVE', 'client_id_16': 7, 'period_date_1': datetime.date(2018, 9, 1), 'period_date_2': datetime.date(2020, 1, 17)}]
+
+
+
+SELECT gp.direct_sale.status,
+gp.direct_sale.version,
+gp.direct_sale.modified_on,
+gp.direct_sale.approved_on,
+gp.direct_sale.id,
+gp.direct_sale.client_id,
+gp.direct_sale.item,
+gp.direct_sale.st_num,
+gp.direct_sale.bt_num,
+gp.direct_sale.tt_key,
+gp.direct_sale.trans_code,
+gp.direct_sale.inv_num,
+gp.direct_sale.line_num,
+gp.direct_sale.period_month,
+gp.direct_sale.price_month,
+gp.direct_sale.period_date,
+gp.direct_sale.price_date,
+gp.direct_sale.net_amount,
+gp.direct_sale.quantity,
+gp.direct_sale.source,
+gp.direct_sale.file_id,
+gp.direct_sale.gross_sales,
+gp.direct_sale.discount,
+gp.direct_sale.contract_num,
+gp.direct_sale.sb_id,
+gp.direct_sale.modified_by,
+gp.direct_sale.approved_by
+FROM gp.direct_sale
+LEFT OUTER JOIN gp.product_xref ON (lower(gp.direct_sale.item) = lower(gp.product_xref.item))
+AND gp.direct_sale.period_date >= gp.product_xref.start_date
+AND gp.direct_sale.period_date <= gp.product_xref.end_date
+AND gp.product_xref.client_id = 45
+AND gp.product_xref.status = 'ACTIVE'
+LEFT OUTER JOIN gp.product_blend ON (gp.product_xref.ndc11 = gp.product_blend.ndc11)
+AND gp.direct_sale.period_date >= gp.product_blend.start_date
+AND gp.direct_sale.period_date <= gp.product_blend.end_date
+AND gp.product_blend.client_id = 45
+AND gp.product_blend.status = 'ACTIVE'
+LEFT OUTER JOIN md.product ON (gp.product_blend.ndc11_blend = md.product.ndc11)
+AND gp.direct_sale.period_date >= md.product.start_date
+AND gp.direct_sale.period_date <= md.product.end_date
+AND md.product.client_id = 45
+AND md.product.status = 'ACTIVE'
+LEFT OUTER JOIN gp.customer_id AS "ShiptoCustnum" ON (gp.direct_sale.st_num = "ShiptoCustnum".customer_id)
+AND gp.direct_sale.period_date >= "ShiptoCustnum".start_date
+AND gp.direct_sale.period_date <= "ShiptoCustnum".end_date
+AND "ShiptoCustnum".client_id = 45
+AND "ShiptoCustnum".status = 'ACTIVE'
+LEFT OUTER JOIN gp.customer_id AS "BilltoCustnum" ON (gp.direct_sale.bt_num = "BilltoCustnum".customer_id)
+AND gp.direct_sale.period_date >= "BilltoCustnum".start_date
+AND gp.direct_sale.period_date <= "BilltoCustnum".end_date
+AND "BilltoCustnum".client_id = 45
+AND "BilltoCustnum".status = 'ACTIVE'
+LEFT OUTER JOIN gp.customer AS "ShiptoCust" ON ("ShiptoCustnum".customer_id_sparc = "ShiptoCust".id)
+AND gp.direct_sale.period_date >= "ShiptoCust".start_date
+AND gp.direct_sale.period_date <= "ShiptoCust".end_date
+AND "ShiptoCust".client_id = 45
+AND "ShiptoCust".status = 'ACTIVE'
+LEFT OUTER JOIN gp.customer AS "BilltoCust" ON ("BilltoCustnum".customer_id_sparc = "BilltoCust".id)
+AND gp.direct_sale.period_date >= "BilltoCust".start_date
+AND gp.direct_sale.period_date <= "BilltoCust".end_date
+AND "BilltoCust".client_id = 45
+AND "BilltoCust".status = 'ACTIVE'
+LEFT OUTER JOIN gp.customer_cppd AS "CPPD" ON ("BilltoCustnum".customer_id = "CPPD".bt_num)
+AND gp.direct_sale.period_date >= "CPPD".start_date
+AND gp.direct_sale.period_date <= "CPPD".end_date
+AND "CPPD".client_id = 45
+AND "CPPD".status = 'ACTIVE'
+LEFT OUTER JOIN gp.cot AS "BilltoCOT" ON (lower("BilltoCust".cot) = lower("BilltoCOT".abbr))
+AND gp.direct_sale.period_date >= "BilltoCOT".start_date
+AND gp.direct_sale.period_date <= "BilltoCOT".end_date
+AND "BilltoCOT".client_id = 45
+AND "BilltoCOT".status = 'ACTIVE'
+LEFT OUTER JOIN gp.cot AS "ShiptoCOT" ON (lower("ShiptoCust".cot) = lower("ShiptoCOT".abbr))
+AND gp.direct_sale.period_date >= "ShiptoCOT".start_date
+AND gp.direct_sale.period_date <= "ShiptoCOT".end_date
+AND "ShiptoCOT".client_id = 45
+AND "ShiptoCOT".status = 'ACTIVE'
+LEFT OUTER JOIN gp.cot ON (CASE
+WHEN ("BilltoCOT".whlsr = 'y'
+AND "ShiptoCOT".whlsr = 'n') THEN "BilltoCOT".abbr
+ELSE "ShiptoCOT".abbr
+END = gp.cot.abbr)
+AND gp.direct_sale.period_date >= gp.cot.start_date
+AND gp.direct_sale.period_date <= gp.cot.end_date
+AND gp.cot.client_id = 45
+AND gp.cot.status = 'ACTIVE'
+LEFT OUTER JOIN gp.trans_type ON (lower(gp.direct_sale.tt_key) = lower(gp.trans_type.key))
+AND gp.direct_sale.period_date >= gp.trans_type.start_date
+AND gp.direct_sale.period_date <= gp.trans_type.end_date
+AND gp.trans_type.client_id = 45
+AND gp.trans_type.status = 'ACTIVE'
+LEFT OUTER JOIN gp.state ON (CASE
+WHEN ("BilltoCOT".whlsr = 'y'
+AND "ShiptoCOT".whlsr = 'n') THEN lower("BilltoCust".state)
+ELSE lower("ShiptoCust".state)
+END = lower(gp.state.abbr))
+AND gp.direct_sale.period_date >= gp.state.start_date
+AND gp.direct_sale.period_date <= gp.state.end_date
+AND gp.state.client_id = 45
+AND gp.state.status = 'ACTIVE'
+LEFT OUTER JOIN gp.phs_result ON (gp.direct_sale.st_num = gp.phs_result.number
+AND gp.direct_sale.price_date = gp.phs_result.invoice_date)
+AND gp.direct_sale.period_date >= gp.phs_result.start_date
+AND gp.direct_sale.period_date <= gp.phs_result.end_date
+AND gp.phs_result.client_id = 45
+AND gp.phs_result.status = 'ACTIVE'
+WHERE gp.direct_sale.client_id = 45
+
+
+
+if it fits any of your current opening for Software engineer, Data Engineer and Data Analyst then it would be good.
+
+				
+ALTER TABLE gp.bucket_detail
+ADD COLUMN is_excluded BOOLEAN DEFAULT FALSE,
+ADD COLUMN logic_slot4 INTEGER CONSTRAINT bucket_detail_logic_slot4_fkey REFERENCES gp.logic_bucket (id) ON DELETE CASCADE,
+ADD COLUMN logic_slot5 INTEGER CONSTRAINT bucket_detail_logic_slot5_fkey REFERENCES gp.logic_bucket (id) ON DELETE CASCADE,
+ADD COLUMN logic_slot4_ratio1 INTEGER CONSTRAINT bucket_detail_logic_slot4_ratio1_fkey REFERENCES gp.logic_bucket (id) ON DELETE CASCADE,
+ADD COLUMN logic_slot5_ratio1 INTEGER CONSTRAINT bucket_detail_logic_slot5_ratio1_fkey REFERENCES gp.logic_bucket (id) ON DELETE CASCADE,
+ADD COLUMN group_key4 VARCHAR,
+ADD COLUMN group_key5 VARCHAR;
+
+CREATE INDEX ix_gp_bucket_detail_logic_slot_4_sel ON gp.bucket_detail USING btree (logic_slot4);
+CREATE INDEX ix_gp_bucket_detail_logic_slot_5_sel ON gp.bucket_detail USING btree (logic_slot5);
+CREATE INDEX ix_gp_bucket_detail_logic_slot4_r1_sel ON gp.bucket_detail USING btree (logic_slot4_ratio1);
+CREATE INDEX ix_gp_bucket_detail_logic_slot5_r1_sel ON gp.bucket_detail USING btree (logic_slot5_ratio1);

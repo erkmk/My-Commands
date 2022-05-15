@@ -1,0 +1,61 @@
+#Loading data to db
+
+select
+pid,
+backend_start,
+wait_event_type,
+wait_event,
+query,
+now() - pg_stat_activity.query_start as elapsed,
+state
+from pg_stat_activity where state = 'active' order by backend_start;
+
+
+SELECT   a.pid,
+		 a.datname,
+         l.relation::regclass,
+         l.transactionid,
+         l.mode,
+         l.GRANTED,
+         a.usename,
+         a.query,
+         a.query_start,
+         age(now(), a.query_start) AS "age"
+FROM pg_stat_activity a
+JOIN pg_locks l ON l.pid = a.pid
+where cast(l.relation::regclass as varchar) like 'md."user"%'
+ORDER BY a.query_start;
+
+select relation::regclass, pid, * from pg_locks where not granted;
+
+--terminate whose granted value is true
+SELECT pg_terminate_backend(395); 
+
+#update query
+db.session.query(model).filter(and_(model.source == old_source, model.status == "ACTIVE")).update({"source": new_source}, synchronize_session="fetch")
+
+#Join Query
+query = (
+                    FileTemplate.query.join(
+                        GPTemplateMapping,
+                        and_(
+                            GPTemplateMapping.template_id == FileTemplate.sb_id,
+                            FileTemplate.status == BaseVersionStatusEnum.ACTIVE,
+                        ),
+                    )
+                    .join(Client, GPTemplateMapping.client_id == Client.id).filter(and_(id == GPTemplateMapping.id, client_id==Client.id))
+                    .with_entities(
+                        Client.pretty_name,
+                        GPTemplateMapping.id,
+                        GPTemplateMapping.data_type,
+                        GPTemplateMapping.source,
+                        GPTemplateMapping.template_id,
+                        GPTemplateMapping.files_processed,
+                        GPTemplateMapping.last_processed,
+                        GPTemplateMapping.last_error,
+                        FileTemplate.name,
+                        FileTemplate.description,
+                        Client.id.label("client_id"),
+                        getattr(GPTemplateMapping, "additional_filter", literal("")).label("additional_filter"),
+                    )
+                )

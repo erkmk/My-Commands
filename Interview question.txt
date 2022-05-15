@@ -1,0 +1,5 @@
+
+- Describe Dictionary in python?
+- How could you iterate over the keys and values of a dictionary in python? (like with in a For loop)
+- What is returned when iterating over a dictionary?
+- 

@@ -1,0 +1,19 @@
+NDC9 and NDC11
+
+1) AMP ndc9
+2)QAMP avg of 3 month of amp ndc9
+3)base price ndc9
+4)URA(calculate this use bp)
+5)PHS (base on URA and AMP )2qtr ahead and 2qtr
+6)cppd (prompt pay discount on every transaction)
+7)ASP (only eligible to 5i product)
+8)
+
+1 package mein 30 
+
+9)NFAMP 
+whole sale and non whole sale
+iff 0.05% submitted to the Gov(VA).
+
+10)anfam (annually october)
+11)federal cieling price

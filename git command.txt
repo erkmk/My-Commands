@@ -1,0 +1,97 @@
+
+Used Git bash:
+for adding new account:  git remote set-url origin https://erkmk@github.com/erkmk/emp-forum.git
+
+step1: make folder where you want to save your project then right click and open git bash and run following command..
+
+-git config --global user.name khalid
+-git config --global user.email er.kmk123@gmail.com
+-code . to open vscode
+-git init
+-ls -lart it will hidden file also.
+
+-git status
+-git add -A
+-git commit -m " comment "
+-git remote add origin <HTTPS Link>
+-git push -u origin master
+-git log -p -2
+
+//to revert commit 
+>git reset HEAD~
+
+//to Untracked the file
+-git rm --cached -r mac/shop/__pycache__
+
+
+#check all branch
+git branch -a
+
+#Adding new branch locally
+-git branch localbranchname
+#Adding 
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
+
+//Adding repo in private repo(first get read write access of that private repo)
+-go to Github settings 
+-go to ssh and GPG keys 
+-we will give access of our Github account to our local machine by generating ssh key.
+-go to Generating new ssh key and adding it to ssh-agent
+-command
+-ssh-keygen -t rsa -b 4096 -C "github emailaddress"
+-eval $(ssh-agent -s)
+-ssh-add ~/.ssh/id_rsa
+-cat ~/.ssh/id_rsa.pub
+The copy the generated key and go to new ssh key and paste their
+and then swicth link to ssh at GitHub and now you can push from local machine.but add one thing that is
+to set the new url 
+-git remote set-url origin <paste your ssh link here>
+check the url settings
+-git remote -v
+
+
+
+ 
+
+
+
+
+
+//Deleting commit
+-git reset --hard HEAD~n (n is no of commit)
+
+
+
+
+// forcefully update remote master from local
+-git push <url> --force
+
+
+
+origin  https://github.com/employeeforum-org/EmployeeForum-Code.git (fetch)
+origin  https://github.com/employeeforum-org/EmployeeForum-Code.git (push)
+
+
+ git remote -v
+ git remote remove origin
+
+ git remote add origin https://github.com/employeeforum-org/EmployeeForum-Code.git
+ git remote set-url https://github.com/employeeforum-org/EmployeeForum-Code.git
+
+git checkout --track origin/development
+
+6f4ed644d
+****************************************************
+If you just deleted the branch, you'll see something like this in your terminal:
+
+Deleted branch <your-branch> (was <sha>)
+To restore the branch, use: 
+git checkout -b <branch> <sha>
+****************************************************
+
+
+Error response from daemon: Bad response from Docker engine

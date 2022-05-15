@@ -1,0 +1,2373 @@
+json----
+{
+   "approved_by":63,
+   "modifying_user":{
+      "id":63,
+      "name":"Nick O'Brien"
+   },
+   "modified_by":63,
+   "ordering":1,
+   "modified_on":"2020-06-29 20:05:09.662406 UTC",
+   "report_template":{
+      "modified_on":"2020-08-24 19:06:48.377249",
+      "modified_on_tmz":"2020-08-24 15:06",
+      "filepath":"/usr/src/app/upload/9069143d-900d-4a77-a9d3-90b2241bc6c9.xlsm",
+      "scanned":true,
+      "scan_error":false,
+      "price_type_id":263,
+      "modified_user":{
+         "id":77,
+         "name":"Kristine Flynn"
+      },
+      "id":207,
+      "filename":"Alfasigma amp Report Template.xlsm"
+   },
+   "version":1,
+   "status":"ACTIVE",
+   "id":263,
+   "name":"amp",
+   "undo_count":1,
+   "modified_on_tmz":"2020-06-29 16:05",
+   "sb_id":263,
+   "price_type":"AMP",
+   "errors":[
+      
+   ],
+   "approved_on":"2020-06-29 20:05:09.662374",
+   "client_id":43,
+   "approving_user":{
+      "id":63,
+      "name":"Nick O'Brien"
+   },
+   "approval":null,
+   "redo_count":0,
+   "buckets_and_formulas":[
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":1,
+         "formula_children":[
+            
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3313,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"prompt_pay_percent",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"",
+         "u_round":0,
+         "dollars_value":"0.02",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0.02",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":2,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7830,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"rcp_sales",
+         "enabled":true,
+         "reportable_name":"RCP Sales (70/30 calc)",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND COT.RCPElig = 'y' AND NetAmount != 0 AND TransType.Class = 'sale'",
+         "calc_group":"PRE",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":3,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3314,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"rcp_sales_12m",
+         "bucket_children":[
+            {
+               "id":7830,
+               "name":"rcp_sales",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"RCP Sales - 12 months (70/30 calc)",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"rcp_sales + 0 + 0",
+         "calc_group":"PRE",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":4,
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7831,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"rcp_elig_adj",
+         "enabled":true,
+         "reportable_name":"",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND COT.RCPElig = 'y' AND (MType = '' OR MType = NULL) AND TransType.Class = 'adjust'",
+         "calc_group":"PRE",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":5,
+         "formula_children":[
+            
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3315,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"rcp_elig_adj_12m",
+         "bucket_children":[
+            {
+               "id":7831,
+               "name":"rcp_elig_adj",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"rcp_elig_adj + 0 + 0",
+         "calc_group":"PRE",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":6,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7832,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_gross_sales_pre",
+         "enabled":true,
+         "reportable_name":"Gross Sales (70/30 calc)",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":true,
+         "value":"TransType.Class = 'sale'",
+         "calc_group":"PRE",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":7,
+         "formula_children":[
+            {
+               "id":3314,
+               "name":"rcp_sales_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3315,
+               "name":"rcp_elig_adj_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3316,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"rcp_amp_elig_12m",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Net RCP sales (70/30 calc)",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"rcp_sales_12m - rcp_elig_adj_12m - 0",
+         "calc_group":"PRE",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":8,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3317,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_gross_sales_12m",
+         "bucket_children":[
+            {
+               "id":7832,
+               "name":"ds_gross_sales_pre",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"Gross Sales - 12 months (70/30 calc)",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_gross_sales_pre + 0 + 0",
+         "calc_group":"PRE",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":9,
+         "formula_children":[
+            {
+               "id":3316,
+               "name":"rcp_amp_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3317,
+               "name":"ds_gross_sales_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3318,
+         "no_rollup":true,
+         "summary_variance":false,
+         "name":"rcp_ratio",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"RCP 70/30 calc ratio",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":true,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"rcp_amp_elig_12m / ds_gross_sales_12m",
+         "calc_group":"PRE",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":10,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7833,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_gross_sales",
+         "enabled":true,
+         "reportable_name":"Gross Sales",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":true,
+         "value":"TransType.Elig = 'y' AND TransType.Class IN('sale','free_good')",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":11,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7834,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_trans_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Direct Sales - Transaction",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":12,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7835,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_inelig_state",
+         "enabled":true,
+         "reportable_name":"Ineligible Direct Sales - State",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'n' AND TransType.Class = 'sale'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":13,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7836,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_inelig_cot",
+         "enabled":true,
+         "reportable_name":"Ineligible Direct Sales - COT",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND (COTElig = 'n' OR (MType != '' AND MType != NULL)) AND TransType.Class = 'sale'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":14,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7837,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_free_goods",
+         "enabled":true,
+         "reportable_name":"Free goods",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND COTElig = 'y' AND (MType = '' OR MType = NULL) AND NetAmount = 0 AND TransType.Class IN('sale','free_good')",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":15,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7838,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_elig_adj",
+         "enabled":true,
+         "reportable_name":"Eligible Direct Sales Adjustments",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND COTElig = 'y' AND (MType = '' OR MType = NULL) AND TransType.Class = 'adjust'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":16,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7839,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_inelig_adj",
+         "enabled":true,
+         "reportable_name":"Ineligible Direct Sales Adjustments",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND (State.AMPElig = 'n' OR COTElig = 'n'  OR (MType != '' AND MType != NULL)) AND TransType.Class = 'adjust'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":17,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7840,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"ds_elig",
+         "enabled":true,
+         "reportable_name":"Eligible Direct Sales",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"TransType.Elig = 'y' AND State.AMPElig = 'y' AND COTElig = 'y' AND (MType = '' OR MType = NULL) AND NetAmount != 0 AND TransType.Class = 'sale'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":18,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3319,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_inelig",
+         "bucket_children":[
+            {
+               "id":7834,
+               "name":"ds_trans_inelig",
+               "_type":"BUCKET"
+            },
+            {
+               "id":7835,
+               "name":"ds_inelig_state",
+               "_type":"BUCKET"
+            },
+            {
+               "id":7836,
+               "name":"ds_inelig_cot",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"Total Ineligible Direct Sales",
+         "u_round":0,
+         "dollars_value":"ds_trans_inelig + ds_inelig_state + ds_inelig_cot",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_trans_inelig + ds_inelig_state + ds_inelig_cot",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":19,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3320,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_adj_elig",
+         "bucket_children":[
+            {
+               "id":7838,
+               "name":"ds_elig_adj",
+               "_type":"BUCKET"
+            },
+            {
+               "id":7840,
+               "name":"ds_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible Adjusted Direct Sales",
+         "u_round":0,
+         "dollars_value":"ds_elig + ds_elig_adj + 0",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_elig + ds_elig_adj + 0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":20,
+         "formula_children":[
+            
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3321,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_elig_12m",
+         "bucket_children":[
+            {
+               "id":7840,
+               "name":"ds_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"",
+         "u_round":0,
+         "dollars_value":"ds_elig + 0 + 0",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_elig + 0 + 0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":21,
+         "formula_children":[
+            {
+               "id":3320,
+               "name":"ds_adj_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3322,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_adj_elig_12m",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible Adjusted Direct Sales - 12 months",
+         "u_round":0,
+         "dollars_value":"ds_adj_elig - 0 + 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_adj_elig - 0 + 0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":22,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7841,
+         "source":"CBK",
+         "summary_variance":false,
+         "name":"cbk_cont_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Indirect Sales - Contract",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"WAC_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"BilltoState.AMPElig = 'y' AND (Contract.Eligible = 'n' OR (MType != '' AND MType != NULL))",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (CBK)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":23,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7842,
+         "source":"CBK",
+         "summary_variance":false,
+         "name":"cbk_state_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Indirect Sales - State",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"WAC_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"BilltoState.AMPElig = 'y' AND Contract.Eligible = 'y' AND (MType = '' OR MType = NULL) AND ShiptoState.AMPElig = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (CBK)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":24,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7843,
+         "source":"CBK",
+         "summary_variance":false,
+         "name":"cbk_cot_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Indirect Sales - COT",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"WAC_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"BilltoState.AMPElig = 'y' AND Contract.Eligible = 'y' AND (MType = '' OR MType = NULL) AND ShiptoState.AMPElig = 'y' AND COTElig = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (CBK)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":25,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7844,
+         "source":"CBK",
+         "summary_variance":false,
+         "name":"cbk_elig",
+         "enabled":true,
+         "reportable_name":"Eligible Chargebacks",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"CBK_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"BilltoState.AMPElig = 'y' AND Contract.Eligible = 'y' AND (MType = '' OR MType = NULL) AND ShiptoState.AMPElig = 'y' AND COTElig = 'y'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (CBK)"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":26,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3323,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"cbk_elig_12m",
+         "bucket_children":[
+            {
+               "id":7844,
+               "name":"cbk_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"AMP Eligible Chargebacks - 12 months",
+         "u_round":0,
+         "dollars_value":"cbk_elig + 0 + 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":27,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3324,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"cbk_inelig",
+         "bucket_children":[
+            {
+               "id":7841,
+               "name":"cbk_cont_inelig",
+               "_type":"BUCKET"
+            },
+            {
+               "id":7842,
+               "name":"cbk_state_inelig",
+               "_type":"BUCKET"
+            },
+            {
+               "id":7843,
+               "name":"cbk_cot_inelig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"Total Ineligible Indirect Sales",
+         "u_round":0,
+         "dollars_value":"cbk_cont_inelig + cbk_state_inelig + cbk_cot_inelig",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"cbk_cont_inelig + cbk_state_inelig + cbk_cot_inelig",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":28,
+         "formula_children":[
+            {
+               "id":3324,
+               "name":"cbk_inelig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3325,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"indir_inelg_12m",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Ineligible Indirect Sales - 12 months",
+         "u_round":0,
+         "dollars_value":"cbk_inelig + 0 + 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"cbk_inelig + 0 + 0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":29,
+         "formula_children":[
+            {
+               "id":3322,
+               "name":"ds_adj_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3325,
+               "name":"indir_inelg_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3326,
+         "no_rollup":true,
+         "summary_variance":false,
+         "name":"indir_inelg_ratio",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Ineligible Indirect Sales ratio",
+         "u_round":0,
+         "dollars_value":"0",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"indir_inelg_12m / ds_adj_elig_12m",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":30,
+         "formula_children":[
+            {
+               "id":3320,
+               "name":"ds_adj_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3327,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"ds_avg_adj_elig",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"",
+         "u_round":0,
+         "dollars_value":"ds_adj_elig / ds_adj_elig.units",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":31,
+         "formula_children":[
+            {
+               "id":3320,
+               "name":"ds_adj_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3326,
+               "name":"indir_inelg_ratio",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3327,
+               "name":"ds_avg_adj_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3328,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"indir_smooth_inelig",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Smoothed Ineligible Indirect Sales",
+         "u_round":0,
+         "dollars_value":"(ds_adj_elig.units * indir_inelg_ratio.units) * ds_avg_adj_elig",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_adj_elig * indir_inelg_ratio",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":32,
+         "formula_children":[
+            {
+               "id":3320,
+               "name":"ds_adj_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3328,
+               "name":"indir_smooth_inelig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3329,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"amp_elig",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible AMP Sales",
+         "u_round":0,
+         "dollars_value":"ds_adj_elig - indir_smooth_inelig",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_adj_elig - indir_smooth_inelig",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":33,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7845,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"reb_cont_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Rebates - Contract",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":34,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7846,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"reb_state_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Rebates - State",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'y' AND ShiptoState.AMPElig = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":35,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7847,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"reb_cot_inelig",
+         "enabled":true,
+         "reportable_name":"Ineligible Rebates - COT",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'y' AND ShiptoState.AMPElig = 'y' AND COTElig = 'n'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":36,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7848,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"bfsf_elig",
+         "enabled":true,
+         "reportable_name":"Eligible Bona Fide Service Fees",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'y' AND ShiptoState.AMPElig = 'y' AND COTElig = 'y' AND BFSF = 'y'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":37,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7849,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"reb_elig",
+         "enabled":true,
+         "reportable_name":"Eligible Rebates",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'y' AND ShiptoState.AMPElig = 'y' AND COTElig = 'y' AND BFSF = 'n' AND Rebate.Type = 'rebate'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":38,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7850,
+         "source":"REB",
+         "summary_variance":false,
+         "name":"reb_fee_elig",
+         "enabled":true,
+         "reportable_name":"Eligible fees",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":false,
+         "value":"Contract.Eligible = 'y' AND ShiptoState.AMPElig = 'y' AND COTElig = 'y' AND BFSF = 'n' AND Rebate.Type != 'rebate'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (REB)"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":39,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3330,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"reb_elig_12m",
+         "bucket_children":[
+            {
+               "id":7849,
+               "name":"reb_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"AMP Eligible rebates - 12 months",
+         "u_round":0,
+         "dollars_value":"reb_elig + 0 + 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":40,
+         "formula_children":[
+            
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3331,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"reb_fee_elig_12m",
+         "bucket_children":[
+            {
+               "id":7850,
+               "name":"reb_fee_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"",
+         "u_round":0,
+         "dollars_value":"reb_fee_elig + 0 + 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":41,
+         "formula_children":[
+            {
+               "id":3323,
+               "name":"cbk_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3330,
+               "name":"reb_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3331,
+               "name":"reb_fee_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3332,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"pc_elig_12m",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible Price Concessions - 12 months",
+         "u_round":0,
+         "dollars_value":"cbk_elig_12m + reb_elig_12m + reb_fee_elig_12m",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":11,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":42,
+         "formula_children":[
+            {
+               "id":3322,
+               "name":"ds_adj_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3325,
+               "name":"indir_inelg_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3333,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"amp_elig_12m",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible AMP Sales - 12 months",
+         "u_round":0,
+         "dollars_value":"ds_adj_elig_12m - indir_inelg_12m - 0",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"ds_adj_elig_12m - indir_inelg_12m - 0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":43,
+         "formula_children":[
+            {
+               "id":3332,
+               "name":"pc_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3333,
+               "name":"amp_elig_12m",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3334,
+         "no_rollup":true,
+         "summary_variance":false,
+         "name":"pc_elig_ratio",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Price Concession ratio",
+         "u_round":0,
+         "dollars_value":"pc_elig_12m / amp_elig_12m",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":44,
+         "formula_children":[
+            {
+               "id":3329,
+               "name":"amp_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3334,
+               "name":"pc_elig_ratio",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3335,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"pc_smooth_elig",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Smoothed Eligible Price concessions",
+         "u_round":0,
+         "dollars_value":"pc_elig_ratio * amp_elig",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "summary":false,
+         "value_period":"DEFAULT",
+         "group_key":null,
+         "ordering":45,
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":7851,
+         "source":"DS",
+         "summary_variance":false,
+         "name":"nonwhlds_elig",
+         "enabled":true,
+         "reportable_name":"Eligible Non Wholesaler Sales",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "use_cppd":false,
+         "dollar_type":"NET_AMOUNT",
+         "unbucketed":false,
+         "price_type_id":263,
+         "allow_overlap":true,
+         "value":"COT.Wholesaler = 'n' AND State.AMPElig = 'y' AND (MType = '' OR MType = NULL) AND COTElig = 'y'",
+         "calc_group":"STANDARD",
+         "_type":"BUCKET",
+         "type":"Bucket (DS)"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":46,
+         "formula_children":[
+            {
+               "id":3313,
+               "name":"prompt_pay_percent",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3336,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"nonwhl_ppd",
+         "bucket_children":[
+            {
+               "id":7851,
+               "name":"nonwhlds_elig",
+               "_type":"BUCKET"
+            }
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible Prompt Pay discount",
+         "u_round":0,
+         "dollars_value":"nonwhlds_elig * prompt_pay_percent",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":true,
+         "value_period":"DEFAULT",
+         "ordering":47,
+         "formula_children":[
+            {
+               "id":3329,
+               "name":"amp_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3335,
+               "name":"pc_smooth_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3336,
+               "name":"nonwhl_ppd",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3337,
+         "no_rollup":false,
+         "summary_variance":true,
+         "name":"amp_net_elig",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Eligible AMP Net Sales",
+         "u_round":0,
+         "dollars_value":"amp_elig - pc_smooth_elig - nonwhl_ppd",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"amp_elig - pc_smooth_elig - nonwhl_ppd",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":48,
+         "formula_children":[
+            {
+               "id":3337,
+               "name":"amp_net_elig",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3338,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"amp_ndc9",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Calculated AMP - NDC9",
+         "u_round":0,
+         "dollars_value":"CASE WHEN amp_net_elig.units <= 0 OR amp_net_elig <= 0 THEN 0 ELSE amp_net_elig / amp_net_elig.units END",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"CASE WHEN amp_net_elig <= 0 THEN 0 ELSE amp_net_elig END",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":true,
+         "value_period":"DEFAULT",
+         "ordering":49,
+         "formula_children":[
+            {
+               "id":3338,
+               "name":"amp_ndc9",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3339,
+               "name":"ramp",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3339,
+         "no_rollup":false,
+         "summary_variance":true,
+         "name":"ramp",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Monthly AMP",
+         "u_round":3,
+         "dollars_value":"CASE WHEN amp_ndc9 = 0 THEN prior_month(ramp) ELSE amp_ndc9 END",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":6,
+         "minimum":false,
+         "deliverable":"MAMP",
+         "price_type_id":263,
+         "units_value":"amp_ndc9",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":50,
+         "formula_children":[
+            {
+               "id":3338,
+               "name":"amp_ndc9",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3340,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"mamp_calculated",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Calculated Monthly AMP",
+         "u_round":0,
+         "dollars_value":"amp_ndc9 * amp_ndc9.units",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"amp_ndc9",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":51,
+         "formula_children":[
+            {
+               "id":3344,
+               "name":"qamp_totals",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3341,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"qamp",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Calculated Quarterly AMP",
+         "u_round":3,
+         "dollars_value":"qamp_totals / qamp_totals.units",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":6,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"qamp_totals",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":true,
+         "value_period":"DEFAULT",
+         "ordering":52,
+         "formula_children":[
+            {
+               "id":3341,
+               "name":"qamp",
+               "_type":"FORMULA",
+               "type":"Formula"
+            },
+            {
+               "id":3342,
+               "name":"rqamp",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3342,
+         "no_rollup":false,
+         "summary_variance":true,
+         "name":"rqamp",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Quarterly AMP",
+         "u_round":3,
+         "dollars_value":"CASE WHEN qamp = 0 THEN prior_quarter(rqamp) ELSE qamp END",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":6,
+         "minimum":false,
+         "deliverable":"QAMP",
+         "price_type_id":263,
+         "units_value":"qamp",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":53,
+         "formula_children":[
+            
+         ],
+         "reportable":true,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3343,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"_monthly_weighted_wac",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"Monthly Weighted WAC",
+         "u_round":0,
+         "dollars_value":"monthly_weighted_wac",
+         "level":"NDC11",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"0",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      },
+      {
+         "period":0,
+         "summary":false,
+         "value_period":"DEFAULT",
+         "ordering":54,
+         "formula_children":[
+            {
+               "id":3340,
+               "name":"mamp_calculated",
+               "_type":"FORMULA",
+               "type":"Formula"
+            }
+         ],
+         "reportable":false,
+         "labeler_variances":[
+            
+         ],
+         "variance_threshold_unit":"0.0000",
+         "id":3344,
+         "no_rollup":false,
+         "summary_variance":false,
+         "name":"qamp_totals",
+         "bucket_children":[
+            
+         ],
+         "enabled":true,
+         "reportable_name":"QAMP using actual MAMP totals",
+         "u_round":0,
+         "dollars_value":"mamp_calculated + period_adjust(mamp_calculated, '-1') + period_adjust(mamp_calculated, '-2')",
+         "level":"NDC9",
+         "errors":[
+            
+         ],
+         "variance_threshold_dollar":"0.0000",
+         "derived":false,
+         "logic_master_id":null,
+         "ratio_formula":false,
+         "d_round":0,
+         "minimum":false,
+         "deliverable":null,
+         "price_type_id":263,
+         "units_value":"mamp_calculated + period_adjust(mamp_calculated, '-1') + period_adjust(mamp_calculated, '-2')",
+         "calc_group":"STANDARD",
+         "_type":"FORMULA",
+         "type":"Formula"
+      }
+   ],
+   "edit_state":{
+      "ACTIVE":true,
+      "status":"ACTIVE"
+   },
+   "run_price_type":{
+      "output_state":"CURRENT_READ",
+      "executing":false,
+      "start_period":"2019-06-29",
+      "run_id":116,
+      "end_period":"2020-06-29",
+      "ndc9_filter":"",
+      "price_type":{
+         "price_type":"AMP",
+         "modified_on":"2020-06-29 20:05:09.662406 UTC",
+         "errors":[
+            
+         ],
+         "status":"ACTIVE",
+         "id":263,
+         "sb_id":263,
+         "name":"amp"
+      },
+      "notes":[
+         
+      ],
+      "attachments":[
+         {
+            "link":"run_price_type",
+            "description":"Standard AMP Report",
+            "filepath":"/usr/src/app/upload/94971a2b-8459-4e8b-be3a-b4b727c6ae96",
+            "ref_id":588,
+            "scanned":true,
+            "scan_error":false,
+            "filename":"alfasigma 202006 AMP Report (Testing 1131).xlsm",
+            "id":232,
+            "mimetype":"application/vnd.ms-excel.sheet.macroenabled.12"
+         }
+      ],
+      "overrides":[
+         
+      ],
+      "price_type_id":263,
+      "effective_date":null,
+      "stage":"ANALYSIS",
+      "last_started":"2020-06-29T19:53:41.706517",
+      "id":588,
+      "start_year":"2019",
+      "start_month":"6",
+      "end_year":"2020",
+      "end_month":"6",
+      "enabled":true
+   }
+}

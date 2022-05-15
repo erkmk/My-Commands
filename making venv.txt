@@ -1,0 +1,57 @@
+
+*** Window Power Shell ***
+
+pip install virtualenv 
+
+-To create virtual environment
+python -m venv <venvname>
+
+-To activate venv
+<name>\Scripts\activate and press enter
+or
+<name>\Sc pressTab \ac pressTab and then hit enter
+
+-To give the rights on window power shell
+-Run power shell as admin
+set-executionpolicy remotesigned
+
+-to create requirements.txt file 
+ pip freeze > requirements.txt
+ 
+ python -m ensurepip
+ 
+-if want to install all file listed in requirements.txt file to another venv then,
+ pip install -r .\requirements.txt
+ 
+-if we want to create an env and want to install all packages from outside the env that already has installed then,
+ virtualenv --system-site-packages <venv name> 
+ 
+*** On Command Prompt *** 
+ 
+-to delete venv
+rmdir <venvname> /s
+
+-creating virtualenv inside project directory
+first make project directory:
+	mkdir my_project
+	python -m venv my_project/<venvname>
+	
+To activate this:
+	my_project\<venvname\Scripts\activate.bat
+	
+-if we want to create an env and want to install all packages from outside the env that already has installed then,
+ virtualenv <venv name> --system-site-packages  
+ 
+-To check out the packages the only install inside your venv:
+	pip list --local
+	
+	
+*** Django ***
+-django-admin startproject projectname
+-python manage.py startapp appname
+-python manage.py runserver
+
+	
+	
+	
+	

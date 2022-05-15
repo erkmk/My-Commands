@@ -1,0 +1,36 @@
+Flask and SQLAlchamy:
+
+#imp to link
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+https://realpython.com/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
+https://tenthousandmeters.com/blog/python-behind-the-scenes-1-how-the-cpython-vm-works/
+
+
+
+conn = op.get_bind()
+    session = Session(bind=conn)
+
+    query = session.query(GPTemplateMapping).with_entities(GPTemplateMapping.template_id).all()
+
+    session.query(FileTemplate).filter(FileTemplate.id.in_(query)).update(
+        {
+         "services": "Government Pricing",
+        },
+        synchronize_session=False,
+        )
+
+    session.commit()
+	
+		
+		
+##notin_
+	query = FileTemplate.query.filter(and_(
+            FileTemplate.status.notin_(
+                (BaseVersionStatusEnum.INACTIVE, BaseVersionStatusEnum.SUPERCEDED)
+            ),FileTemplate.services.like("%" + service + "%"))
+        ).order_by(FileTemplate.name)
+		
+#Multilple row delete 
+# table.delete().where(table.c.id==7)
+# session.query(Users).filter(Users.id.in_(subquery....)).delete(synchronize_session=False)
+db.session.query(File).filter(File.id.in_(file_id)).delete(synchronize_session=False)

@@ -1,0 +1,71 @@
+1> Stop the docker containers.
+
+	docker-compose stop
+	
+2> Then remove all the containers.
+
+	docker-compose rm -v
+	
+3> Then check which are the images present.
+
+	docker images
+	
+4> If there is any claims image, remove it.
+
+	docker rmi claims
+	
+5> Then build the claims containers again.
+
+	docker build . -t claims
+	
+6> Then let's make containers up again.
+
+	docker-compose up -d
+	
+7> Then let's load dump file data into local sql file i.e. container.
+
+	docker cp D:\Data/claims.dmp icyte-sparc_database_1:./
+
+	docker cp D:\Data\claims/claims.dmp icyte-sparc_database_1:./
+	
+
+8> Then restore the claims file into our local database.
+
+	docker exec -it icyte-sparc_database_1 pg_restore -c -U pguser -d claims claims.dmp
+	
+	docker exec -it icyte-sparc_database_1 psql -U pguser -d claims -f local_dump.sql
+	
+9> Then load script db. Change the environment variable in docker-compose.yml file to scripts.
+
+	docker exec -it icyte-sparc_app_1 python manage.py load_scripts_db
+	
+10> Then stop the containers and make them up again.
+
+11> If db does not exists error occurs, then stop the container and remove only script db container.
+
+	docker rm icyte-sparc_scripts_database_1
+	
+12> Also check whether the env variable we set to scripts is actually got set or not.
+
+	docker exec -it icyte-sparc_scripts_database_1 env
+	
+13> Then make the containers up again and reload the scripts db.
+
+	docker exec -it icyte-sparc_app_1 python manage.py load_scripts_db
+	
+14> Then in the pycharm, run the migrations.
+
+	docker exec -it icyte-sparc_app_1 alembic upgrade head
+	
+15> Then go to Price Type Editor, create new price type. Then you have to approve it. If Approvals option is not present, then give access to 
+    your user in dbeaver.
+	
+	select * from md.user where username = 'brian';
+	select * from md.client c  where name = 'alfasigma';
+	insert into md.user_resource (user_id, client_id, resource_id, start_date, end_date)
+	select 5, 43, r.id, '1990-01-01', '2099-12-31' from md.resource r where (
+		r.name like 'gp%' or r.name like 'md%'
+	)
+	and r.id not in (select resource_id from md.user_resource where user_id = 5 and client_id = 43);
+
+

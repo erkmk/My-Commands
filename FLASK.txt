@@ -1,0 +1,41 @@
+######FLASK 
+-set FLASK_ENV=development
+Flask needs to be told how to import it, by setting the FLASK_APP environment variable:
+export FLASK_APP=microblog.py
+If you are using the Microsoft Windows command prompt, use set instead of export in the command above.
+-set FLASK_APP=run.py
+
+
+# Command:
+>flask run
+>flask db init
+>flask db migrate -m "users table"
+>flask db upgrade
+>flask db downgrade
+
+
+
+# db setup
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+
+# path
+http://127.0.0.1:5000/api/common/test/
+
+# model relationship
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
+
+# migration
+
+# Marshmallow Schema
+https://kimsereylam.com/python/2019/10/25/serialization-with-marshmallow.html
+
+(exam='NEET', level='E', question='Who is also called the “Darwin of the 20th century”?', option1='Lamarck', option2='Ernst Mayr', option3='Carolus Linnaeus', option4='Robert May', answer='2', explaination='Ernst Mayr', subject='BIOLOGY', chapter_question=c)
+
+(exam='NEET', level='E', question='The number of species that are known and described range between _. Fill in the blanks with the correct option from the following.', option1='1.4 to 1.5 million', option2='1.6 to 1.7 million', option3='1.7 to 1.8 million', option4='1.9 to 2 million', answer='3', explaination='1.7 to 1.8 million', chapter=1, bio_chapter=c)
+
+(exam='NEET', level='E', chapter_no=1, question='Who is also called the “Darwin of the 20th century”?', option1='Lamarck', option2='Ernst Mayr', 
+option3='Carolus Linnaeus', option4='Robert May', answer='2', explaination='Ernst Mayr', chapter=c)
+
+9495714296
+
+Nilgiris Green, Himalayan Blue or Agra Fort Red!

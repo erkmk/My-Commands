@@ -1,0 +1,23 @@
+----------------------------------- Steps to checkout the latest code -----------------------------------
+
+1. git checkout gp-development
+
+2. git pull --rebase
+
+3. git stash                             | If any errro occurs. Then repeat the second step.
+
+4. git branch <your branch e.g. GP-138>
+
+5. git checkout <your branch e.g. GP-138>
+
+
+----------------------------------- Steps to commit and raise PR -----------------------------------
+
+1. In Icyte direcory (where your code resides), right click and open tortoiseGIT --> diff.
+2. Select the files those have your chages and right click --> Commit.
+3. Then Push.
+4. Go to : https://github.integrichain.net/ProductEngineering/icyte-sparc Then sign in. You will see your changes reflected. 
+5. Select gp-development branch and check the mergeability with your branch. 
+6. Then click on Create Pull Request. 
+7. Copy the url, give it to reviewer.
+

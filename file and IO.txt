@@ -1,0 +1,8 @@
+####File Handling I/O
+
+ #take all three file here and loop in and call validate for all one by one.
+    current_path = os.getcwd()
+    abs_path = os.path.join(current_path, "template/price_types/")
+    list_dir = os.listdir(abs_path)
+    # print("abs_path.....", abs_path)
+    # print("listdir.....", os.listdir(abs_path))

@@ -1,0 +1,208 @@
+
+#GP Mapping
+client
+Data Type 
+source 
+file Temp
+filter Name
+
+#Templates
+Name
+Description
+
+
+<modal id='template-edit' class='hidden'>
+    <div class='sparq-modal-overlay hidden'></div>
+    <div class='sparq-modal' style='width: 460px'>
+        <form [formGroup]='templateForm' novalidate (ngSubmit)='templateSubmit(templateForm)'>
+            <div class='sparq-modal-header'>
+                <span *ngIf="template.id">
+                    Edit Template
+                </span>
+                <span *ngIf="!template.id">
+                    New Template
+                </span>
+            </div>
+            <div class='sparq-modal-body'>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" ngModel 
+                        formControlName="name" 
+                        [ngClass]="{'is-invalid': templateForm.controls.name.errors}"
+                        class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="value">Description</label>
+                    <textarea id="template-description" ngModel formControlName="description" class="form-control"></textarea>
+                </div>
+                <div class='text-danger' *ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+            </div>
+            <div class='sparq-modal-footer'>
+                <button id='template-submit-btn' type='submit' class='btn btn-primary' [disabled]='!templateForm.valid'>
+                    Submit
+                </button>
+                <button id='template-cancel-btn' (click)='templateEditCancel()' type='button' class='btn btn-secondary'>
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</modal>
+
+
+ class='ag-theme-balham'
+    style='width: 100%; height: calc(100% - 100px);'
+    rowSelection='multiple'
+    [rowData]='templates'
+    [rowHeight]='34'
+    [columnDefs]='columnDefs'
+    (gridReady)='onGridReady($event)'
+    [enableFilter]='true'
+    [enableSorting]='true'
+    (cellClicked)='openFileTemplate($event)'
+    (selectionChanged)='onSelectionChanged()'
+    overlayNoRowsTemplate='There are no templates.'>
+	
+	
+#Delete the data by sending whole data 
+# data = request.get_json()
+# GPTemplateMapping.query.filter(GPTemplateMapping.id.in_([row["id"] for row in data])).delete(synchronize_session=False)
+
+
+
+data {'id': 37, 'client_name': 'Averitas', 'name': 'PHS Results', 'description': 'Default File Template for PHS Results file', 'data_type': 'PHS_RESULT', 'source': 'Custom', 'template_id': 104, 'files_processed': 0, 'last_processed': 'N/A', 'last_error': 'N/A', 'client_id': 40, 'additional_filter': 'test'}
+
+data {'id': 8, 'client_name': 'EyePoint Pharmaceuticals, Inc.', 'name': 'Chargebacks SPS', 'description': '', 'data_type': 'CHARGEBACK', 'source': 'SPS', 'template_id': 68, 'files_processed': 0, 'last_processed': 'N/A', 'last_error': 'N/A', 'client_id': 13, 'additional_filter': 'cbk1'}
+
+#todays session 
+-AWS Migrations
+
+#contract and Pricing:
+ICRM to ICyte 
+
+
+#######################
+<modal id="gp-template-edit" class="hidden">
+    <div class="sparq-modal-overlay hidden"></div>
+    <div class="sparq-modal" style="width: 450px">
+        <form [formGroup]="mappingEditForm" novalidate (ngSubmit)="mappingEditSubmit(mappingEditForm)">
+            <div class='sparq-modal-header'>
+                    Edit Mapping
+            </div>
+            <div class="sparq-modal-body">
+                <div class="form-group">
+                    <label for="mapping-client">Client</label>
+                    <select id="mapping-client" class="form-control" formControlName="client_id" disabled>
+                        <option *ngFor="let client of clients" [value]="client.id">{{ client.pretty_name }}</option> 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mapping-data-type">Data Type</label>
+                    <input id="mapping-data-type" class="form-control" formControlName="data_type" [value]="selectedClient.data_type" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="mapping-source">Source</label>
+                    <input id="mapping-source" class="form-control" formControlName="source" [value]="selectedClient.source" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="mapping-template">File Template</label>
+                    <!-- <input id="mapping-template" class="form-control" formControlName="template_id" [value]="selectedClient.name"> -->
+                    <select id="mapping-template" class="form-control" formControlName="template_id">
+                        <option *ngFor="let template of templates" [value]="template.id">{{ template.name }}</option> 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mapping-template">Filter Name</label>
+                    <input id="filter-name" class="form-control" formControlName="additional_filter" [value]="selectedClient.additional_filter">
+                </div>
+                <div *ngIf="mappingForm.invalid" class="text-danger">
+                    {{ errorMessage }}
+                </div>
+            </div>
+            <div class="sparq-modal-footer">
+                <button id="mapping-submit-btn" type="submit" class="btn btn-primary" [disabled]="!mappingEditForm.valid">
+                    Submit
+                </button>
+                <button id="mapping-cancel-btn" (click)="mappingEditCancel()" type="button" class="btn btn-secondary">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</modal>
+
+
+
+// public mappingSubmit(mappingForm) {
+    //     const value = mappingForm.value;
+    //     this.templateService.addGPTemplateMapping(value).subscribe(
+    //         () => {
+    //             this.templateService.getGPTemplateMappings().subscribe((mappings) => {
+    //                 this.mappings = mappings;
+
+    //                 this.mappingForm.reset();
+    //                 this.modalService.hide("gp-template-new");
+    //             });
+    //         },
+    //         (err) => {
+    //             const error = JSON.parse(err);
+    //             this.errorMessage = error.message;
+    //             this.mappingForm.setErrors({ "invalid": true });
+    //         }
+    //     );
+    // }
+	
+results=db.session.query(DirectSale).join(File, File.id==DirectSale.file_id).join(FileTemplate, FileTemplate.id == File.filetemplate_id)
+		.filter(and_(FileTemplate.name == 'Direct Sales SPS', DirectSale.source == 'SPS - Direct Sales SPS'))
+		.update({DirectSale.source == data.get('name')})
+		
+# select f.filetemplate_id, f2.*, ds.* from gp.direct_sale ds
+        # join md.file f on f.id=ds.file_id
+        # join md.filetemplate f2 on f2.id = f.filetemplate_id 
+        # order by ds.id desc;
+        # db.session.query(DirectSale).join(File, File.id==DirectSale.file_id).join(FileTemplate, FileTemplate.id == File.filetemplate_id).filter(and_(FileTemplate.name == 'Direct Sales SPS', DirectSale.source == 'SPS - Direct Sales SPS')).update({DirectSale.source:data.get('name')})
+#update query
+db.session.query(model).filter(and_(model.source == old_source, model.status == "ACTIVE")).update({"source": new_source}, synchronize_session="fetch")
+
+	
+
+// public deleteGPTemplateMappings(mappings) {
+    //     let body = JSON.stringify(mappings);
+    //     let headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    //     this.http.delete(`/common/filetemplate/gp/mapped/`, {headers: headers, body: body}).subscribe(() => {
+
+    //     });
+    // }
+	
+	
+additional_filter: "cbk"
+client_id: 6
+client_name: "SCILEX Pharmaceuticals"
+data_type: "CHARGEBACK"
+description: "Civica-specific SPS direct sales file -- standard SPS layout plus a manual Contract column"
+files_processed: 0
+id: 10
+last_error: "N/A"
+last_processed: "N/A"
+name: "Civica Direct Sales SPS"
+new_name: "Chargebacks SPS"
+source: "SPS"
+template_id: "68"
+
+
+
+
+
+source_type.source_enumtype == BucketSourceEnum.TRI
+
+
+ public excludePriceType(tid, link, isExclude)
+    {
+        return this.http.put(`/gp/price_type/${tid}/${link}/${isExclude}/`, "").map(res => {
+            return res
+        });
+    }
+

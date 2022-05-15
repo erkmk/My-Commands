@@ -1,0 +1,70 @@
+from datetime import date
+
+from sqlalchemy import text
+from sqlalchemy.ext.declarative import declared_attr
+
+from app import db
+from app.common.models import MD_TABLE_ARGS, MD_SCHEMA
+from app.common.models.base import BaseVersionMixinModel
+from app.common.models.client import Client
+
+
+
+
+
+class OTC(BaseVersionMixinModel, db.Model):
+    __tablename__ = "otc"
+
+    @declared_attr
+    def __table_args__(cls):
+        base_args = super(cls, cls).__table_args__
+
+        return base_args + (
+            db.Index(
+                "otc_ndc11_uniq",
+                "client_id",
+                "ndc11",
+                unique=True,
+                sqlite_where=text("status = 'ACTIVE'"),
+                postgresql_where=text("status = 'ACTIVE'"),
+            ),
+            MD_TABLE_ARGS,
+        )
+
+    id = db.Column(db.Integer, primary_key=True, comment="Primary Key")
+    client_id = db.Column(
+        db.Integer,
+        db.ForeignKey(MD_SCHEMA + "client.id"),
+        nullable=False,
+        comment="Client ID foreign key",
+    )
+    ndc11 = db.Column(db.String(11), nullable=False, comment="NDC11 value")
+    baseline_amp = db.Column(
+        db.Numeric(precision=14, scale=7),
+        # Populated after first AMP is calculated in GP
+        default=0,
+        server_default="0",
+        comment="Baseline AMP",
+    )
+    baseline_cpiu = db.Column(
+        db.Numeric(precision=14, scale=7),
+        # Rule: Required for GP/MEDI
+        default=0,
+        server_default="0",
+        comment="Baseline Quarter YYYYQQ format",
+    )
+    baseline_qtr = db.Column(
+        db.String(6),  # Rule: Required for GP/MEDI
+        comment="Baseline Quarter YYYYQQ format",
+    )
+    
+    use_inflation_penalty = db.Column(db.Boolean, server_default="t", default=True, nullable=False)
+
+    start_date = db.Column(
+        db.Date, server_default="1970-01-01", default=date(1970, 1, 1), nullable=False
+    )
+    end_date = db.Column(
+        db.Date, server_default="2099-01-01", default=date(2099, 1, 1), nullable=False
+    )
+
+    

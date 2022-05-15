@@ -1,0 +1,21 @@
+***********IMP CODE ****************
+
+# Used Patch
+from mock import patch
+
+def async_update_transactions_patch(*args, **kwargs):
+    from app.common.controllers.filetemplate.gp.mapped import update_transactions
+    update_transactions(*args)
+
+
+class UnmappedGPTemplatesViewTest(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+
+        transfer_patch = patch(
+            "app.common.controllers.filetemplate.gp.mapped.update_transactions.delay",
+            async_update_transactions_patch,
+        )
+
+        transfer_patch.start()
+        self.addCleanup(transfer_patch.stop)
