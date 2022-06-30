@@ -53,5 +53,5 @@ To activate this:
 
 	
 	
-	
-	
+C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts\
+C:\Users\khanmoh\AppData\Local\Programs\Python\Python39\python.exe

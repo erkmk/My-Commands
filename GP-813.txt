@@ -1,0 +1,5 @@
+
+data..... {'startRow': 0, 'endRow': 19, 'filterModel': {}, 'sortModel': []}
+
+
+if isinstance(line["value"], str):

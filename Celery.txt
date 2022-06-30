@@ -1,0 +1,17 @@
+#Celery
+https://testdriven.io/blog/flask-and-celery/
+https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/
+
+#with django
+https://www.toptal.com/python/orchestrating-celery-python-background-jobs
+
+#celery with flower
+https://flower.readthedocs.io/en/latest/
+
+#with Rabit MQ and Fastapi
+https://medium.com/thelorry-product-tech-data/celery-asynchronous-task-queue-with-fastapi-flower-monitoring-tool-e7135bd0479f
+
+
+
+
+

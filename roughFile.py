@@ -204,3 +204,15 @@ I know you’re busy, but it would help me to have more regular check-ins with y
 I’ll better understand what you look for in projects, get over the learning curve, and then be able to run on my own.
 Thank you for making it a priority to highlight my work. I spent a great deal of time to get better understanding of domain (GP) and also learned all the new 
 tech stack that I haven't worked on before, and it meant so much to me that you recognized my efforts on slack.
+
+
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "file" violates foreign key constraint "file_validation_file_id_fkey" on table "file_validation"
+
+DETAIL:  Key (id)=(70050) is still referenced from table "file_validation".
+
+
+[SQL: DELETE FROM md.file WHERE md.file.id IN (%(id_1)s, %(id_2)s, %(id_3)s, %(id_4)s)]
+
+[parameters: {'id_1': 70050, 'id_2': 70051, 'id_3': 70052, 'id_4': 70053}]
+
+        # count = FileTemplate.query.filter_by(name=line["value"]).count()

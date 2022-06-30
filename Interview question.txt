@@ -2,4 +2,9 @@
 - Describe Dictionary in python?
 - How could you iterate over the keys and values of a dictionary in python? (like with in a For loop)
 - What is returned when iterating over a dictionary?
-- 
+- safe way to retrieve value of a key that may not be in dictionary?
+- How could you set the value of object's attribute equal to the value of matching key in a dictionary.
+- Whats a generator?
+- What happened when you iterate over the same generator a 2nd time?
+- Whats a lambda function? 
+- What are some situations where you might use a lambda function?

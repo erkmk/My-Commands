@@ -69,3 +69,10 @@ public onGridReady(params){
             }
             
         ];
+		
+background
+Gov Pricing
+we load files to s3 bucket
+then icyte picks it up
+and loads the file to gp
+where and what are based on how the file is named

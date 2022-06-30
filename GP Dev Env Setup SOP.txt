@@ -24,14 +24,17 @@
 	
 7> Then let's load dump file data into local sql file i.e. container.
 
-	docker cp D:\Data/claims.dmp icyte-sparc_database_1:./
+	docker cp D:\Data/local.dmp icyte-sparc-database-1:./
 
 	docker cp D:\Data\claims/claims.dmp icyte-sparc_database_1:./
+	
+	# To remove file from container
+	docker exec icyte-sparc_database_1 rm -rf test_data.dmp
 	
 
 8> Then restore the claims file into our local database.
 
-	docker exec -it icyte-sparc_database_1 pg_restore -c -U pguser -d claims claims.dmp
+	docker exec -it icyte-sparc_database_1 pg_restore -c -U pguser -d claims local.dmp
 	
 	docker exec -it icyte-sparc_database_1 psql -U pguser -d claims -f local_dump.sql
 	

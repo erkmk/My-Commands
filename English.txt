@@ -1,0 +1,7 @@
+#
+
+Our issue is a file was loaded with old records, it basically duplicated those records in the close.  
+We had the file deleted, but there were ids from prior closes that also related to those records.  
+The deletion got rid of the bad load file and all historical records with the same ids.  
+We are trying to reconcile the data we currently have in the system vs what we had before we loaded the bad file, 
+so we can get the system back to what is was before the deletion.

@@ -1,4 +1,6 @@
 ****COMMAND****
+https://christoph.ruegg.name/blog/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
+
 mahisayyed5855@gmail.com
 docker logs --tail 200 icyte-sparc_app_1
 docker logs --tail 200 icyte-sparc_app-background_1
@@ -7,9 +9,15 @@ docker logs --tail 200 icyte-sparc_app-file-scanner_1
 docker exec -it icyte-sparc_app_1 python manage.py load_scripts_db
 docker volume prune
 
+# rebuilding container
+docker-compose up -d --build
+
 docker restart icyte-sparc_app_1 icyte-sparc_app-background_1 icyte-sparc_app-file-scanner_1 icyte-sparc_app-mft-background_1 icyte-sparc_app-reporting-background_1
+      icyte-sparc_app-gp-cbk-background_1 icyte-sparc_app-medi-mc-pbr-background_1
 
 ng serve --proxy-config ./proxy.conf.json
+
+}*KKRJ4{n]q+}$P
 
 ng build --watch
 
@@ -52,6 +60,20 @@ I was able to build here during my tenure. I am just as lucky to have met you! M
 send me a line. My email is jasmine.skinnerd@gmail.com
 ####
 
+#dev
+khalid/khalid123
+
+#qa
+id: khalid
+pass: khalid123
+akshay/akshay
+
+#uat
+id: khalid
+pass: khalidk123
+Uid : qa_test
+pass : Test123
+
 
 
 //run front end:
@@ -71,6 +93,13 @@ live changes:
       "changeOrigin": true
      } 
 }
+
+
+#Release
+- if hotfix:-
+	-feature branch to Hotfix Branch (QA2) to UAT to PROD
+- if Release:-
+	-feature branch to development branch to release branch to QA to UAT to PROD
 
 lib-pass:@Mission@.
 router: radiance51586
@@ -132,3 +161,31 @@ npm install -g @angular/cli@wished.version.here
 45. top – View active processes live with their system usage
 46. useradd and usermod – Add new user or change existing users data
 47. passwd – Create or update passwords for existing users
+
+
+#WSL
+wsl -l -v
+wsl --shutdown
+wsl --list
+wsl --install
+wsl --list --online
+wsl --install -d <DistroName>
+wsl --set-default-version 2
+
+def create_db_uri(self):
+        print("-------------------------SSSSSSSSSSSSSSSSSS--------------", os.getcwd())
+
+        with open(os.path.abspath("logging_config.yml"), "r") as stream:
+            print("********************************", stream.readlines())
+        print("-------------------------XXXXXXXXXXXXXXXXXXXX")
+        pguser = self._config.get("POSTGRES_USER", "")
+        pgpass = self._config.get("POSTGRES_PASSWORD", "")
+        pghost = self._config.get("POSTGRES_HOST", "")
+        pgdb = self._config.get("POSTGRES_DB", "")
+
+        pguser = "icyteapp"
+        pgpass = "q2io8jwq3sIDD9Fv0199"
+        pghost = "dev-icyte-sparc.cbptgzgybgnp.us-east-1.rds.amazonaws.com"
+        pgdb = "claims"
+
+        return "postgresql://{}:{}@{}/{}".format(pguser, pgpass, pghost, pgdb)
