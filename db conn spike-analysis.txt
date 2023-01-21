@@ -1,0 +1,33 @@
+
+
+https://us-east-1.console.aws.amazon.com/systems-manager/resource-groups/cloudwatch?region=us-east-1&dashboard=ICyte-CnP-PROD-RDS
+
+https://app.datadoghq.com/dashboard/te7-222-tpi/icyte-cp?page=0&from_ts=1669228200000&to_ts=1673532240000&live=false
+
+https://aws.amazon.com/premiumsupport/knowledge-center/rds-write-latency-spikes/#:~:text=The%20spike%20might%20also%20result,heavy%20workload%20on%20the%20database.
+
+https://stackoverflow.com/questions/50191411/aws-rds-why-suddenly-number-of-connections-increased
+
+https://sysdig.com/blog/monitoring-amazon-rds/
+
+https://stackoverflow.com/questions/50191411/aws-rds-why-suddenly-number-of-connections-increased
+
+https://aws.amazon.com/premiumsupport/knowledge-center/rds-mysql-max-connections/#:~:text=This%20is%20because%2C%20the%20instance,low%20on%20memory%20might%20crash.
+
+  
+1-AWS blog
+2-lazy loading 
+3-observed weired things on prod db
+
+from 21 Nov to till date
+-rds disk throughput on data Dog
+read increased
+
+-RDS IOPS max: 2500 on Data daog
+reade increased compare previous quarter
+
+-Read / Write latency on AWS  max:0.250 sec
+our reading 2.035 sec
+
+-Disk QueueDepth on AWS   should below 2 count
+our reading is 38 max and avg is 16

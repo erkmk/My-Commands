@@ -5,6 +5,9 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
 https://realpython.com/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
 https://tenthousandmeters.com/blog/python-behind-the-scenes-1-how-the-cpython-vm-works/
 
+#bulk insert and update
+https://towardsdatascience.com/how-to-perform-bulk-inserts-with-sqlalchemy-efficiently-in-python-23044656b97d
+
 
 
 conn = op.get_bind()
@@ -34,3 +37,27 @@ conn = op.get_bind()
 # table.delete().where(table.c.id==7)
 # session.query(Users).filter(Users.id.in_(subquery....)).delete(synchronize_session=False)
 db.session.query(File).filter(File.id.in_(file_id)).delete(synchronize_session=False)
+
+
+# Join query
+result = db.session.execute(
+            union(
+                User.query.filter(User.id == g.user.id).join(UserService).join(Service).with_entities(User.id, User.pretty_name, Service.id, Service.name),
+            )
+        )
+		
+return (
+            sorted(
+                [
+                    {
+                        "user_id": row[0],
+                        "client_name": row[1],
+                        "service_id": row[2],
+                        "service_name": row[3],
+                    }
+                    for row in result
+                ],
+                key=lambda r: (r["client_name"], r["service_name"]),
+            ),
+            200,
+        ) 

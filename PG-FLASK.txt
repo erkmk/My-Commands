@@ -5,6 +5,9 @@ export FLASK_APP=microblog.py
 If you are using the Microsoft Windows command prompt, use set instead of export in the command above.
 -set FLASK_APP=run.py
 
+# postgresql://username:password@host:port/database_name
+# mysql://username:password@host:port/database_name
+
 
 # Command:
 >flask run
@@ -13,7 +16,15 @@ If you are using the Microsoft Windows command prompt, use set instead of export
 >flask db upgrade
 >flask db downgrade
 
+# Alembic Command for Docker
+>docker-compose exec app alembic init migrations #initialize alembic
+make require changes in alembic.ini and env.py
+>docker-compose exec app alembic revision --autogenerate -m "create initial tables"
+>docker exec -it paper-gen_app_1 alembic upgrade head 
+https://blog.jerrycodes.com/multiple-heads-in-alembic-migrations/
 
+# error Command for Docker
+>docker logs --tail 200 paper-gen_app_1
 
 # db setup
 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database

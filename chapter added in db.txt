@@ -1,0 +1,52 @@
+# Physics
+Gravitation = 108
+Laws_Of_Motion = 105
+Oscillations = 114
+Work_Energy_And_Power = 106
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Chemistry
+Chemical_Bonding_And_Molecular_Structure = 204
+Chemical_Kinetics = 218
+Coordination_Compounds = 222
+The_D_And_F_Block_Elements = 221
+Electrochemistry = 217
+
+
+# Biology
+Anatomy_Of_Flowering_Plants = 306
+Biodiversity_And_Conservation = 337
+Biomolecules = 309
+Cell_The_Unit_Of_Life = 308
+Chemical_Coordination_And_Integration = 322
+Body_Fluids_And_Circulation = 318
+Biological_Classification = 302
+Neural_Control_And_Coordination = 321
+Digestion_And_Absorption = 316
+Ecosystem = 336
+Environmental_Issues = 338
+Evolution = 329
+

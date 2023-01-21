@@ -1,0 +1,46 @@
+# paper-setter app setup on local
+
+1- Build the papers container
+> docker build . -t papers
+
+2- Then let's make containers up.
+> docker-compose up -d
+
+3- Upgrade alembic migration head
+> docker exec -it paper-setter-app-1 alembic upgrade head
+
+4- Load test data into db
+> docker-compose exec app python manage.py load
+
+5- Build UI
+> cd pg-ui
+> ng build
+then copy dist folder to static
+> cp -r dist/* ../static/
+
+
+
+
+
+
+# rebuilding container
+> docker-compose up -d --build
+
+# Check for container logs
+> docker logs --tail 200 paper-setter-app-1
+
+**Before adding changes into git ***
+> black <filepath>
+
+# Installing new lib
+> docker exec -it paper-setter-app-1 pip install -r requirements-dev.txt
+
+########
+#Bio
+> Evolution
+
+#Chem
+> chemical bonding
+
+#physics
+>motion

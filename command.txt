@@ -1,17 +1,26 @@
 ****COMMAND****
 https://christoph.ruegg.name/blog/git-howto-revert-a-commit-already-pushed-to-a-remote-reposit.html
 
+
+
+qa-icyte-sparc-db.integrichain.net
+
 mahisayyed5855@gmail.com
 docker logs --tail 200 icyte-sparc_app_1
-docker logs --tail 200 icyte-sparc_app-background_1
+docker logs -f icyte-sparc-app-1
+docker logs --tail 200 icyte-sparc-app-background-1
 docker logs --tail 200 icyte-sparc_app-file-scanner_1
 
+git config --global http.sslBackend schannel
+
+command: gunicorn -c gunicornconfig.py --bind=unix:/sock/claims.sock --timeout 3600 --workers=4 --limit-request-line 8190 --log-level=debug --reload wsgi
+
 docker exec -it icyte-sparc_app_1 python manage.py load_scripts_db
-docker volume prune
+docker volume prune (https://renehernandez.io/snippets/cleaning-local-docker-cache/)
 
 # rebuilding container
 docker-compose up -d --build
-
+ volume
 docker restart icyte-sparc_app_1 icyte-sparc_app-background_1 icyte-sparc_app-file-scanner_1 icyte-sparc_app-mft-background_1 icyte-sparc_app-reporting-background_1
       icyte-sparc_app-gp-cbk-background_1 icyte-sparc_app-medi-mc-pbr-background_1
 
@@ -20,13 +29,17 @@ ng serve --proxy-config ./proxy.conf.json
 }*KKRJ4{n]q+}$P
 
 ng build --watch
+git fetch origin pull/4230/head:gp-development
 
 http://localhost:4200/non-sso-login
 
 cp -r dist/* ../static/
-docker exec -it icyte-sparc_app_1 alembic upgrade head
+docker exec -it icyte-sparc-app-1 alembic upgrade head
+docker exec -it paper-setter_app_1 alembic upgrade head
 docker exec -it icyte-sparc_app_1 alembic stamp <version>
 docker-compose exec app alembic downgrade -1
+docker-compose run app alembic revision --autogenerate -m "Ticket-Number"
+docker-compose exec app python manage.py load
 
 **Before adding changes into git ***
 > black <filepath>
@@ -36,7 +49,7 @@ docker-compose exec app alembic downgrade -1
 
 #Always to make new branch run git command before that
 git checkout gp-development
-git pull --rebase
+git pull --rebase 
 git stash (if error occurs, and perform pull rebase again)
 git branch <your branch name>
 git checkout <your branch name>
@@ -44,6 +57,16 @@ Make changes. Then
 git add <filename with paths>
 git commit -m "write your commit message"
 git push origin branch_name
+git revert -m 1 <commit hash>
+
+#####
+user: mkkhan
+pass: rm7pWVa6g#f8
+
+reset password here: https://prod-password-portal.integrichain.net/
+rundeck login: https://self-service-portal.integrichain.net/user/login
+use mkkhan@ichaininternal to reset
+use mkkhan for rundeck login
 
 ####Runing unit Test ###########
 depending on how you built your container you may not have the dev dependencies, but they can be install after the fact:
@@ -60,19 +83,61 @@ I was able to build here during my tenure. I am just as lucky to have met you! M
 send me a line. My email is jasmine.skinnerd@gmail.com
 ####
 
+#Code Execution Time
+st = time.time()
+et = time.time()
+elapsed_time = et - st
+print('Execution time1:', elapsed_time, 'seconds')
+
 #dev
 khalid/khalid123
+
+#.execute(query)
+-use execute if uses 'select' object into query
+<sqlalchemy.engine.result.ResultProxy object at 0x7f93b2969f98>
+#query.all()
+-If we did not used select object into query then only use .all().
+
 
 #qa
 id: khalid
 pass: khalid123
 akshay/akshay
+QA_Test_User_1/QATester1
+QA_Test_User_2/QATester2
+QA_Test_User_3/QATester3
+#
+pguser = "icyteapp"
+pgpass = "UXr9uRhTsTHtskR5E8gY"
+pghost = "qa-icyte-sparc-db.integrichain.net"
+pgdb = "claims"
 
 #uat
 id: khalid
 pass: khalidk123
 Uid : qa_test
 pass : Test123
+
+#aws
+12 digit id: integrichain
+username: mkkhan
+password: Chain@96$1#
+
+#marshmallow
+unknown=marshmallow.INCLUDE
+
+#nameserver
+ns120.herosite.pro
+ns121.herosite.pro
+
+#nameserver
+ns1.bluehost.in
+ns2.bluehost.in
+
+#adp
+
+#lapi
+leewayz@n#1
 
 
 
@@ -95,6 +160,7 @@ live changes:
 }
 
 
+
 #Release
 - if hotfix:-
 	-feature branch to Hotfix Branch (QA2) to UAT to PROD
@@ -103,6 +169,12 @@ live changes:
 
 lib-pass:@Mission@.
 router: radiance51586
+
+#insta
+pass: @mcc@5346
+90 feet Road Tilak Nagar, Near Sakinaka Metro Station, Ghatkopar West
+ess ADP:
+pass:
 
 #node
 npm uninstall -g @angular/cli
@@ -189,3 +261,67 @@ def create_db_uri(self):
         pgdb = "claims"
 
         return "postgresql://{}:{}@{}/{}".format(pguser, pgpass, pghost, pgdb)
+		
+# pguser = "icyteapp"
+# pgpass = "q2io8jwq3sIDD9Fv0199"
+# pghost = "dev-icyte-rds.integrichain.net"
+# pgdb = "claims"
+
+# pguser = "icyteapp2"
+# pgpass = "858RJ9CzdRhDTxUs"
+# pghost = "qa-icyte-sparc-db.integrichain.net"
+# pgdb = "claims"
+		
+Khalid, application will use refresh token to refresh the access token while application in use. Application will take user to SSO login if user being idle until session/access token times out.
+Hope I answered your query
+
+# Branching Model:
+master
+
+release/4....
+
+qa2: manually deployment old methodology merge into qa2 
+alembic version 
+
+ Cannot create property 'undefined' on boolean 'false'
+    at push../src/app/gp/components/price-type-comparison/price-type-comparison.component.ts.PriceTypeComparisonComponent.getRunPriceType2 (price-type-comparison.component.ts:74:57)
+
+
+>mcc-demo-server
+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
+
+
+server {
+        listen *:80 default_server;
+        listen [::]:80 default_server;
+
+        server_name web1.webdock.io;
+
+        location / {
+                root /var/www/html/web1.webdock.io/;
+                index index.html;
+        }
+}
+
+
+server {
+#       listen 80;
+#       listen [::]:80;
+#
+#       server_name example.com;
+#
+#       root /var/www/example.com;
+#       index index.html;
+#
+#       location / {
+#               try_files $uri $uri/ =404;
+#       }
+
+ 
+ 
+ # Credit request file runs every day at 6pm EST
+    "credit_request_file": {
+        "task": "app.cbk.services.credit.standard_request_job.standard_request_file",
+        "schedule": crontab(hour=18, minute=0, nowfun=nowfunc),
+    },
+

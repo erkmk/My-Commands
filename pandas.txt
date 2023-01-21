@@ -1,0 +1,20 @@
+# pandas
+
+# writer = pd.ExcelWriter(report_template.filepath, engine ='openpyxl')
+wb = load_workbook(
+        filename=report_template.filepath, read_only=False, keep_vba=True
+    )
+# writer.book = wb
+# writer.sheets = dict((ws.title, ws) for ws in wb.worksheets)
+
+# import time
+
+# st = time.time()
+# df=pd.DataFrame(out)
+# df.to_excel(writer, sheet_name="BUCKETS", columns=bucket_cols_1)
+
+# et = time.time()
+# elapsed_time = et - st
+# print('Execution time excel writing directly from query :', elapsed_time, 'seconds')
+# wb.book.save(tmp.name)
+# wb.save()

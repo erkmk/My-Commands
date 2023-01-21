@@ -1,0 +1,20 @@
+#GP-939
+
+
+http://localhost/gp/editor/14/(logic//sidebar:bucket/1)?status=DRAFT
+
+#Rule tab (get)
+http://localhost/api/gp/price_type/14/?status=DRAFT&run_price_type_id=&version=0
+http://localhost/api/gp/price_type/14/data_sources_date/?status=DRAFT
+http://localhost/api/gp/price_type/14/include_chargeback/?status=DRAFT
+http://localhost/api/common/product_labelers/
+http://localhost/api/gp/price_type/14/variance_thresholds/?status=DRAFT
+
+GET /api/gp/price_type/14/
+GET /api/gp/price_type/14/data_sources_date/
+GET /api/gp/price_type/14/include_chargeback/
+GET /api/common/product_labelers/
+GET /api/gp/price_type/14/variance_thresholds/
+
+#price_type config detail (get)
+http://localhost/api/gp/price_type/14/?status=DRAFT&run_price_type_id=&version=0

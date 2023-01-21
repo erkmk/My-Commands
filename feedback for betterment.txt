@@ -1,0 +1,19 @@
+
+
+#due to older dump
+Connecting to CLAIMS DATABASE:  pguser @ database / claims
+Connecting to SCRIPTS DATABASE:  pguser @ scripts_database / scripts
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.  
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.env] Migrating database db
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.  
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+migrating ======>  db
+ERROR [alembic.util.messaging] Requested revision d168eb212189 overlaps with other requested revisions 6235803ddc62
+  FAILED: Requested revision d168eb212189 overlaps with other requested revisions 6235803ddc62
+  
+  eebe153e997f (head)
+38d2181eb8d9 (head)
+https://stackoverflow.com/questions/42424320/how-do-i-fix-alembics-requested-revision-overlaps-with-other-requested-revisio

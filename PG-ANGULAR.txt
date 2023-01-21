@@ -2,3 +2,21 @@
 node: v14.17.3
 
 # Integration of Flask and ANGULAR
+
+https://blog.bitsrc.io/how-and-why-you-should-avoid-cors-in-single-page-apps-db25452ad2f8
+
+https://frontbackend.com/angular/how-to-generate-angular-application-in-a-specific-version-using-ng-new-command
+
+>npm install -g @angular/cli@8.0.0
+
+>ng new pg-ui
+
+>cd pg-ui
+>ng serve --open
+
+> ng serve --open
+
+
+>ng g m [module-name] --routing 
+or
+>ng g m  sub-folder/module-name

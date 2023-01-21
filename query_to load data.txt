@@ -59,3 +59,19 @@ query = (
                         getattr(GPTemplateMapping, "additional_filter", literal("")).label("additional_filter"),
                     )
                 )
+				
+				
+def downgrade_db():
+    conn = op.get_bind()
+    conn.execute("COMMIT")
+
+    conn.execute(
+        sa.text(
+            """
+            DELETE FROM md.user_resource_audit where resource_id=(select id from md.resource where name='gp.add_header_in_report');
+            DELETE FROM md.user_resource where resource_id=(select id from md.resource where name='gp.add_header_in_report');
+            DELETE FROM md.resource WHERE name='gp.add_header_in_report';
+            """
+        )
+    )
+    conn.execute(sa.text("COMMIT;"))

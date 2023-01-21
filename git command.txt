@@ -2,6 +2,8 @@
 Used Git bash:
 for adding new account:  git remote set-url origin https://erkmk@github.com/erkmk/emp-forum.git
 
+# GitLens — Git supercharged (Extension)
+
 step1: make folder where you want to save your project then right click and open git bash and run following command..
 
 -git config --global user.name khalid
@@ -16,6 +18,8 @@ step1: make folder where you want to save your project then right click and open
 -git remote add origin <HTTPS Link>
 -git push -u origin master
 -git log -p -2
+
+
 
 //to revert commit 
 >git reset HEAD~
@@ -95,3 +99,4 @@ git checkout -b <branch> <sha>
 
 
 Error response from daemon: Bad response from Docker engine
+https://app.getpostman.com/join-team?invite_code=18af3dd4aa9d4e3bdcce6a846bde8936
